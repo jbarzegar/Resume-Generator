@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.2.3/paper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="main.css">
+    <title>{{ name }}: {{ title }}</title>
+    <style>
+        @page {
+            size: A4;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-wrap sheet">
+        <header>
+            <div class="header-content-wrap">
+                <h1>{{ name }}</h1>
+                <h2>{{ title }}</h2>
+            </div>
+        </header>
+        <div class="section-wrapper">
+            <section class="about">
+                <h3>About</h3>
+                <p>{{ about }}</p>
+            </section>
+            <div class="left-section">
+                <section class="work">
+                    <h3>Work</h3>
+                    {{#work}}
+                        <div class="company-wrap">
+                            <h4>{{ companyName }}</h4>
+                            <h5>{{ dateRange }}</h5>
+                            <p>{{ responsibilities }}</p>
+                        </div>
+                    {{/work}}
+                </section>
+                <section class="education">
+                    <h3>Education</h3>
+                    {{ #education }}
+                        <div class="course-container">
+                            <h4>{{ school }}</h4>
+                            <h5>{{ courseDate }}</h5>
+                            {{ #courses }}
+                                <h6>{{ . }}</h6>
+                            {{ /courses }}
+                        </div>
+                    {{ /education }}
+                </section>
+            </div>
+            <div class="right-section">
+                <section class="skills">
+                    <h3>Skills</h3>
+                    {{ #skills }}
+                        <div class="skill-set-container">
+                            <h4>{{ workType }}</h4>
+                            <h5>{{ expTime }}</h5>
+                            <ul class="skill-keywords">
+                                {{ #keywords }}
+                                    <li>{{ . }}</li>
+                                {{ /keywords }}
+                            </ul>
+                        </div>
+                    {{ /skills }}
+                </section>
+                <section class="contact">
+                    <h3>Contact</h3>
+                    {{ #contact }}
+                        <div class="contact-container">
+                            <h5 class="contact-type">{{ type }}:</h5>
+                            <a href="{{link}}">
+                                <h5>{{ value }}</h5>
+                            </a>
+                        </div>
+                    {{ /contact }}
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
